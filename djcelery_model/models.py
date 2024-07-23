@@ -9,7 +9,6 @@ from django.db import models
 from django.db.models import Q
 from django.db.models.query import QuerySet
 from django.contrib.contenttypes.models import ContentType
-from django.utils.six import python_2_unicode_compatible
 
 try:
     # Django >= 1.7
@@ -66,7 +65,6 @@ class ModelTaskMetaManager(ModelTaskMetaFilterMixin, models.Manager):
     def get_queryset(self):
         return ModelTaskMetaQuerySet(self.model, using=self._db)
 
-@python_2_unicode_compatible
 class ModelTaskMeta(models.Model):
     STATES = (
         (ModelTaskMetaState.PENDING, 'PENDING'),
